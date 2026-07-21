@@ -13,5 +13,5 @@ class DummyClass extends AppModel
 
     protected $table = 'DummyTable';
 
-    protected $fillable = [];
+    protected $fillable = ['name'];
 }

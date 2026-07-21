@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ApiController extends Controller
+{
+    protected Request $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
+    protected function sendSuccess($data = null, $message = null, $statusCode = null)
+    {
+        $data = $this->responseWrapper($data)->success($message, $statusCode);
+        return response()->json($data, $data->code);
+    }
+
+    protected function sendError($data = null, $message = null, $statusCode = null)
+    {
+        $data = $this->responseWrapper($data)->error($message, $statusCode);
+        return response()->json($data, $data->code);
+    }
+}

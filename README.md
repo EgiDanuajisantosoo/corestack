@@ -42,14 +42,31 @@ php artisan arch:doctor
 Generate CRUD architecture structure:
 
 ```bash
-php artisan ttid:arch Product
+php artisan corestack:arch Produk
 ```
 
 ## Default Generated Files (arch:corestack)
 
 - app/Services/ResponseService.php
 - app/Http/Controllers/Controller.php
+- app/Services/AppService.php
+- app/Services/AppServiceInterface.php
+- app/Models/AppModel.php
+- app/Http/Controllers/ApiController.php
 - .gitlab/merge_request_templates/pull-request.md
+
+## CRUD Generator Output (corestack:arch)
+
+- app/Models/Entity/Produk.php
+- app/Models/Table/ProdukTable.php
+- app/Services/Produk/ProdukService.php
+- app/Http/Controllers/Produk/ProdukController.php
+- app/Policies/ProdukPolicy.php
+- app/Http/Requests/Produk/StoreProdukRequest.php
+- app/Http/Requests/Produk/UpdateProdukRequest.php
+- database/factories/ProdukFactory.php
+- database/seeders/ProdukSeeder.php
+- database/migrations/*_create_produks_table.php
 
 ## Publish Config
 

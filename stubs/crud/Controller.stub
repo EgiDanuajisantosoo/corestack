@@ -15,4 +15,39 @@ class DummyClassController extends ApiController
         $this->service = $service;
         parent::__construct($request);
     }
+
+    public function index(Request $request)
+    {
+        $data = $this->service->dataTable($request);
+
+        return $this->sendSuccess($data, null, 200);
+    }
+
+    public function store(StoreDummyClassRequest $request)
+    {
+        $data = $this->service->create($request);
+
+        return $this->sendSuccess($data, null, 201);
+    }
+
+    public function show(string $id)
+    {
+        $datum = $this->service->getById($id);
+
+        return $this->sendSuccess($datum, null, 200);
+    }
+
+    public function update(UpdateDummyClassRequest $request, string $id)
+    {
+        $datum = $this->service->update($id, $request);
+
+        return $this->sendSuccess($datum, null, 200);
+    }
+
+    public function destroy(string $id)
+    {
+        $datum = $this->service->delete($id);
+
+        return $this->sendSuccess($datum, null, 200);
+    }
 }

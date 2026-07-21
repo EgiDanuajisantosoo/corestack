@@ -17,4 +17,30 @@ class DummyClassService extends AppService implements AppServiceInterface
     {
         return DummyClassTable::datatable($filter)->paginate($filter->entries ?? 15);
     }
+
+    public function getById($id)
+    {
+        return DummyClassTable::findOrFail($id);
+    }
+
+    public function create($data)
+    {
+        return DummyClassTable::create(['name' => $data['name']]);
+    }
+
+    public function update($id, $data)
+    {
+        $row = DummyClassTable::findOrFail($id);
+        $row->update(['name' => $data['name']]);
+
+        return $row;
+    }
+
+    public function delete($id)
+    {
+        $row = DummyClassTable::findOrFail($id);
+        $row->delete();
+
+        return $row;
+    }
 }

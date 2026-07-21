@@ -17,18 +17,27 @@ class ArchDoctorCommand extends Command
 
         $errors = 0;
 
-        if (! File::exists(app_path('Services/ResponseService.php'))) {
-            $this->error('[MISSING] ResponseService.php tidak ditemukan.');
-            $errors++;
-        } else {
-            $this->line('OK: ResponseService ditemukan.');
+        $requiredFiles = [
+            app_path('Services/ResponseService.php') => 'ResponseService.php',
+            app_path('Http/Controllers/Controller.php') => 'Controller.php',
+            app_path('Services/AppService.php') => 'AppService.php',
+            app_path('Services/AppServiceInterface.php') => 'AppServiceInterface.php',
+            app_path('Models/AppModel.php') => 'AppModel.php',
+            app_path('Http/Controllers/ApiController.php') => 'ApiController.php',
+        ];
+
+        foreach ($requiredFiles as $path => $label) {
+            if (! File::exists($path)) {
+                $this->error("[MISSING] {$label} tidak ditemukan.");
+                $errors++;
+                continue;
+            }
+
+            $this->line("OK: {$label} ditemukan.");
         }
 
         $controllerPath = app_path('Http/Controllers/Controller.php');
-        if (! File::exists($controllerPath)) {
-            $this->error('[MISSING] Controller.php utama hilang.');
-            $errors++;
-        } else {
+        if (File::exists($controllerPath)) {
             $content = File::get($controllerPath);
 
             if (! str_contains($content, 'function sendSuccess')) {
@@ -44,10 +53,6 @@ class ArchDoctorCommand extends Command
             if (! str_contains($content, 'ResponseService')) {
                 $this->error('[VIOLATION] Controller.php tidak menggunakan ResponseService.');
                 $errors++;
-            }
-
-            if ($errors === 0) {
-                $this->line('OK: Base Controller valid.');
             }
         }
 

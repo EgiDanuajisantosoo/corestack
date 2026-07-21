@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Policies;
+
+use App\Models\Entity\DummyClass;
+use App\Models\Entity\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class DummyClassPolicy
+{
+    use HandlesAuthorization;
+
+    public function viewAny(User $user)
+    {
+        return true;
+    }
+
+    public function view(User $user, DummyClass $data)
+    {
+        return true;
+    }
+
+    public function create(User $user)
+    {
+        return true;
+    }
+
+    public function update(User $user, DummyClass $data)
+    {
+        return true;
+    }
+
+    public function delete(User $user, DummyClass $data)
+    {
+        return true;
+    }
+}

@@ -11,6 +11,22 @@ return [
                 'source' => 'Controller.stub',
                 'target' => 'app/Http/Controllers/Controller.php',
             ],
+            [
+                'source' => 'app/Services/AppService.stub',
+                'target' => 'app/Services/AppService.php',
+            ],
+            [
+                'source' => 'app/Services/AppServiceInterface.stub',
+                'target' => 'app/Services/AppServiceInterface.php',
+            ],
+            [
+                'source' => 'app/Models/AppModel.stub',
+                'target' => 'app/Models/AppModel.php',
+            ],
+            [
+                'source' => 'app/Http/Controllers/ApiController.stub',
+                'target' => 'app/Http/Controllers/ApiController.php',
+            ],
         ],
         'gitlab' => [
             [

@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Models;
+
+use Exception;
+use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
+
+class AppModel extends Model
+{
+    protected $keyType = 'string';
+
+    protected $keyIsUuid = true;
+
+    protected $uuidVersion = 4;
+
+    protected $guarded = [];
+
+    public $incrementing = false;
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime',
+    ];
+
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function (self $model): void {
+            if ($model->keyIsUuid && empty($model->{$model->getKeyName()})) {
+                $model->{$model->getKeyName()} = $model->generateUuid();
+            }
+        });
+    }
+
+    protected function generateUuid(): string
+    {
+        switch ($this->uuidVersion) {
+            case 1:
+                return Uuid::uuid1()->toString();
+            case 4:
+                return Uuid::uuid4()->toString();
+        }
+
+        throw new Exception("UUID version [{$this->uuidVersion}] not supported.");
+    }
+}

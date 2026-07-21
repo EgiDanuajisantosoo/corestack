@@ -1,15 +1,24 @@
 <?php return array(
     'root' => array(
         'name' => 'corestack/arch-support',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '9c3a43ffce78f3f02d1727ab1fac9982a72e0ecf',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'brick/math' => array(
+            'pretty_version' => '0.18.0',
+            'version' => '0.18.0.0',
+            'reference' => '82944324d1c1bdb2c2618e89978d4e2ad78d69ad',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../brick/math',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'carbonphp/carbon-doctrine-types' => array(
             'pretty_version' => '3.2.0',
             'version' => '3.2.0.0',
@@ -20,9 +29,9 @@
             'dev_requirement' => false,
         ),
         'corestack/arch-support' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '9c3a43ffce78f3f02d1727ab1fac9982a72e0ecf',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -216,6 +225,30 @@
             'install_path' => __DIR__ . '/../psr/simple-cache',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'ramsey/collection' => array(
+            'pretty_version' => '2.1.1',
+            'version' => '2.1.1.0',
+            'reference' => '344572933ad0181accbf4ba763e85a0306a8c5e2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ramsey/collection',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'ramsey/uuid' => array(
+            'pretty_version' => '4.9.3',
+            'version' => '4.9.3.0',
+            'reference' => '1df15849d00943a67d677dc9cfd80795f038c9f8',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ramsey/uuid',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'rhumsaa/uuid' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '4.9.3',
+            ),
         ),
         'spatie/once' => array(
             'dev_requirement' => false,
