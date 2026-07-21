@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Models\Table;
+
+use App\Models\Entity\DummyClass;
+
+class DummyClassTable extends DummyClass
+{
+    //
+}

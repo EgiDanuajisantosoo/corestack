@@ -1,0 +1,16 @@
+<?php
+
+namespace DummyNamespace\Services;
+
+use Illuminate\Support\Facades\DB;
+
+abstract class BaseService
+{
+    /**
+     * Execute callback in a transaction to keep service operations consistent.
+     */
+    protected function transaction(callable $callback): mixed
+    {
+        return DB::transaction($callback);
+    }
+}

@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Services\DummyClass;
+
+use App\Models\Table\DummyClassTable;
+use App\Services\AppService;
+use App\Services\AppServiceInterface;
+
+class DummyClassService extends AppService implements AppServiceInterface
+{
+    public function __construct(DummyClassTable $model)
+    {
+        parent::__construct($model);
+    }
+
+    public function dataTable($filter)
+    {
+        return DummyClassTable::datatable($filter)->paginate($filter->entries ?? 15);
+    }
+}

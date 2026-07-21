@@ -1,0 +1,17 @@
+## Description
+<!--- Describe your changes in detail -->
+
+## Related Links
+<!--- Please link to the issue here. -->
+
+## Type of change
+- [ ] Fix bugs in test / code
+- [ ] New feature
+- [ ] Docs
+- [ ] Refactor
+- [ ] Other: please elaborate
+
+## Risks
+- [ ] **low**: new features or patches which does not break existing functionality
+- [ ] **medium**: existing functionality in our domain is changed
+- [ ] **high**: breaking contracts with other domain

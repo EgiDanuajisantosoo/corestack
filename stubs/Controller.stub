@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Services\ResponseService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+
+class Controller extends BaseController
+{
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
+
+    public function responseWrapper(mixed $data = null): ResponseService
+    {
+        return new ResponseService($data);
+    }
+
+    protected function sendSuccess(mixed $data = null, mixed $message = null, int|null $statusCode = null)
+    {
+        $data = $this->responseWrapper($data)->success($message, $statusCode);
+        return response()->json($data, $data->code);
+    }
+
+    protected function sendError(mixed $data = null, mixed $message = null, int|null $statusCode = null)
+    {
+        $data = $this->responseWrapper($data)->error($message, $statusCode);
+        return response()->json($data, $data->code);
+    }
+}

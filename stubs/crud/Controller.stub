@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Controllers\DummyClass;
+
+use App\Http\Controllers\ApiController;
+use App\Services\DummyClass\DummyClassService;
+use Illuminate\Http\Request;
+
+class DummyClassController extends ApiController
+{
+    protected DummyClassService $service;
+
+    public function __construct(DummyClassService $service, Request $request)
+    {
+        $this->service = $service;
+        parent::__construct($request);
+    }
+}
